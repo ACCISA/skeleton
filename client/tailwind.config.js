@@ -1,9 +1,22 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./src/**/*.{html,js}"],
-  theme: {
-    extend: {},
+const { colors: defaultColors } = require('tailwindcss/defaultTheme')
+
+const colors = {
+  ...defaultColors,
+  ...{
+    "vm-info-color": {
+      "500": "#c2c2da"
+    },
   },
-  plugins: [],
 }
 
+module.exports = {
+  content: ["./src/**/*.{html,js,jsx}",'node_modules/flowbite-react/lib/esm/**/*.js'],
+  theme: {
+    extend: {},
+    colors: colors, 
+  },
+  plugins: [
+    require('flowbite/plugin')
+  ]
+}
