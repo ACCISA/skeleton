@@ -5,6 +5,10 @@ const registerRouter = async (req, res) => {
   const { email, password } = req.body;
   const secret = bcrypt.genSaltSync(10);
 
+  if (email == null || password == null){
+    res.status(422).json("missing email and password field");
+  }
+  console.log("Creating account: "+email+"; "+password)
   try {
     const userDoc = await User.create({
       email,
