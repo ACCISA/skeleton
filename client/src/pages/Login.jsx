@@ -16,7 +16,7 @@ export default function Login(){
     const handleLogin = (ev) => {
         ev.preventDefault();
         axios.post("/login", {
-            "username": username,
+            "email": username,
             "password": password
         },
         {
@@ -25,12 +25,14 @@ export default function Login(){
             },
         })
         .then(res => {
-            if (res.data.status == "valid"){
+            setRedirect(true)
+            return;
+            if (res.status == 200){
                 signIn({
                     token: "dont need",
                     expiresIn: 3600,
                     tokenType: "Bearer",
-                    authState: { data:"test" },
+                    authState: { data:res.data },
                 });
                 setRedirect(true)
                 return;
@@ -52,7 +54,7 @@ export default function Login(){
                 <form className="flex flex-col gap-4" onSubmit={handleLogin}>
                 <div>
                     <div className="mb-2 block">
-                    <Label htmlFor="email1" value="Username" />
+                    <Label htmlFor="email1" value="Email" />
                     </div>
                     <TextInput id="email1" value={username} type="text" onChange={ev => setUsername(ev.target.value)} placeholder="Username" required />
                 </div>

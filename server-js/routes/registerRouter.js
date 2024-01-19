@@ -7,6 +7,11 @@ const registerRouter = async (req, res) => {
 
   if (email == null || password == null){
     res.status(422).json("missing email and password field");
+    return;
+  } 
+  if (email == undefined || password == undefined){
+    res.status(422).json("missing email and password field");
+    return;
   }
   console.log("Creating account: "+email+"; "+password)
   try {

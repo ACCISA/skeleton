@@ -14,11 +14,11 @@ module.exports = function (app) {
     app.use(
         cors({
             credentials: true,
-            origin: "http://localhost:5173"
+            origin: "http://localhost:5174"
         })
     )
 
-    app.get("/login", loginRouter)
+    app.post("/login", loginRouter)
 
     app.post("/register", registerRouter)
 
