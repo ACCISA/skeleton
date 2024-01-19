@@ -25,14 +25,15 @@ export default function Login(){
             },
         })
         .then(res => {
-            setRedirect(true)
-            return;
             if (res.status == 200){
                 signIn({
-                    token: "dont need",
+                    token: res.data.token,
                     expiresIn: 3600,
                     tokenType: "Bearer",
-                    authState: { data:res.data },
+                    authState: { 
+                        email: res.data.email,
+                        id: res.data._id,
+                    },
                 });
                 setRedirect(true)
                 return;
