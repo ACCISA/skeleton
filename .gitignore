@@ -2,4 +2,4 @@ server/node_modules/
 server-js/node_modules/
 server-js/.env
 .env
-
+client/.yarn/cache/
