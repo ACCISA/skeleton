@@ -4,6 +4,7 @@ const app = express()
 
 const loginRouter = require("./routes/loginRouter")
 const registerRouter = require("./routes/registerRouter")
+const logoutRouter = require("./routes/logoutRouter")
 const cookieParser = require("cookie-parser");
 
 module.exports = function (app) {
@@ -21,6 +22,8 @@ module.exports = function (app) {
     app.post("/login", loginRouter)
 
     app.post("/register", registerRouter)
+
+    app.get("/logout", logoutRouter)
 
 }
 
